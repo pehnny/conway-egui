@@ -1,9 +1,9 @@
 import pygame
 
-WIDTH, HEIGTH = 800, 600
+WINDOW_WIDTH, WINDOW_HEIGHT = 1200, 800
 
-SCREEN = pygame.display.set_mode((WIDTH, HEIGTH))
+SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 CLOCK = pygame.Clock()
 
-CELL_SIZE = 30
+SPEED = 3
