@@ -1,0 +1,3 @@
+from pygame import USEREVENT
+
+NEXTGENERATION = USEREVENT + 1
