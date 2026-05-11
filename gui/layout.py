@@ -1,7 +1,7 @@
 import pygame
 from config import config
 from gui import cell
-from game import grid
+from game.Grid import Grid
 
 #   ---------------------------------
 #   |              Menu             |
@@ -55,7 +55,7 @@ LIBRARY_RECT = pygame.Rect(
     LIBRARY_LAYOUT["height"],
 )
 
-def get_conway_rect(simulation: pygame.Rect, grid: grid.Grid) -> pygame.Rect:
+def get_conway_rect(simulation: pygame.Rect, grid: Grid) -> pygame.Rect:
     offset = cell.get_offset(simulation, grid)
 
     rect = pygame.Rect(

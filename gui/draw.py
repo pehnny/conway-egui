@@ -1,6 +1,7 @@
 import pygame
-from game.grid import Grid
+from game.Grid import Grid
 from gui import cell
+from patterns.Pattern import Pattern
 
 def draw_menu(screen: pygame.Surface, menu: pygame.Rect, color: pygame.Color = pygame.Color(30, 30, 30)) -> None:
     pygame.draw.rect(screen, color, menu)
@@ -31,3 +32,6 @@ def draw_cells(screen: pygame.Surface, grid: Grid, rect: pygame.Rect) -> None:
 
             pygame.draw.rect(screen, (40, 40, 40), cell_rect, 1)
     return
+
+def draw_pattern(screen: pygame.Surface, grid: Grid, rect: pygame.Rect, pattern: Pattern) -> None:
+    pass

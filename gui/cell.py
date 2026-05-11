@@ -1,13 +1,13 @@
 import pygame
-from game import grid
+from game.Grid import Grid
 
-def get_cell_size(simulation: pygame.Rect, grid: grid.Grid) -> int:
+def get_cell_size(simulation: pygame.Rect, grid: Grid) -> int:
     cell_width = simulation.width // grid.cols
     cell_height = simulation.height // grid.rows
 
     return min(cell_width, cell_height)
 
-def get_offset(simulation: pygame.Rect, grid: grid.Grid) -> pygame.Vector2:
+def get_offset(simulation: pygame.Rect, grid: Grid) -> pygame.Vector2:
     cell_size = get_cell_size(simulation, grid)
     
     max_height = cell_size * grid.rows
