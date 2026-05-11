@@ -4,13 +4,20 @@ class Grid:
         self.cols = cols
         self.grid = [[0 for _ in range(cols)] for _ in range(rows)]
 
+    def _is_valid_cell(self, row: int, col: int) -> bool:
+        return 0 <= row < self.rows and 0 <= col < self.cols
+
     def get_grid(self) -> list[list[int]]:
         return self.grid
     
     def get_cell(self, row: int, col: int) -> int:
+        if not self._is_valid_cell(row, col):
+            return 0
         return self.grid[row][col]
     
     def set_cell(self, row: int, col: int, value: int) -> None:
+        if not self._is_valid_cell(row, col):
+            return
         self.grid[row][col] = value
         return
 
@@ -26,22 +33,24 @@ class Conway:
             case 1:
                 self.grid.set_cell(row, col, 0)
         return
+    
+    def border(self, index: int, limit: int) -> int:
+        if index < 0:
+            return limit + index
+        if index >= limit:
+            return index - limit
+        return index
 
     def count_neighbours(self, row: int, col: int) -> int:
         count = 0
 
-        for n_r in range(row-1, row+2):
-            if n_r < 0 or n_r >= self.grid.rows:
-                continue
-
-            for n_c in range(col-1, col+2):
-                if n_c < 0 or n_c >= self.grid.cols:
+        for x in range(row-1, row+2):
+            n_row = self.border(x, self.grid.rows)
+            for y in range(col-1, col+2):
+                if y == col and x == row:
                     continue
-
-                if n_c == col and n_r == row:
-                    continue
-
-                count += self.grid.get_cell(n_r, n_c)
+                n_col = self.border(y, self.grid.cols)
+                count += self.grid.get_cell(n_row, n_col)
         return count
     
     def next_generation(self) -> None:
