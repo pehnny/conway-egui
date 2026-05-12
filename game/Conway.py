@@ -52,14 +52,14 @@ class Conway:
         return
     
     def place_pattern(self, row: int, col: int, pattern: Pattern) -> None:
-        for x, y in pattern.get_pattern():
+        for x, y in pattern.coordinates:
             p_col = self.border(col + x, self.grid.cols)
             p_row = self.border(row + y, self.grid.rows)
 
             if self.grid.get_cell(p_row, p_col):
                 return
             
-        for x, y in pattern.get_pattern():
+        for x, y in pattern.coordinates:
             p_col = self.border(col + x, self.grid.cols)
             p_row = self.border(row + y, self.grid.rows)
             self.grid.set_cell(p_row, p_col, 1)

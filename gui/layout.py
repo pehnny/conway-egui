@@ -2,6 +2,7 @@ import pygame
 from config import config
 from gui import cell
 from game.Grid import Grid
+from patterns.Pattern import Pattern
 
 #   ---------------------------------
 #   |              Menu             |
@@ -55,14 +56,29 @@ LIBRARY_RECT = pygame.Rect(
     LIBRARY_LAYOUT["height"],
 )
 
-def get_conway_rect(simulation: pygame.Rect, grid: Grid) -> pygame.Rect:
-    offset = cell.get_offset(simulation, grid)
+def get_conway_rect(simulation: pygame.Rect, rows: int, cols: int) -> pygame.Rect:
+    cell_size = cell.get_cell_size(simulation, rows, cols)
+    offset = cell.get_grid_offset(simulation, rows, cols, cell_size)
 
     rect = pygame.Rect(
         simulation.left + offset.x,
         simulation.top + offset.y,
         simulation.width - 2*offset.x,
         simulation.height - 2*offset.y
+    )
+
+    return rect
+
+def get_pattern_rect(library: pygame.Rect, pattern: Pattern) -> pygame.Rect:
+    size = pattern.size()
+    cell_size = cell.get_cell_size(library, size, size)
+    offset = cell.get_grid_offset(library, size, size, cell_size)
+
+    rect = pygame.Rect(
+        library.left + offset.x,
+        library.top + offset.y,
+        library.width - 2*offset.x,
+        library.height - 2*offset.y
     )
 
     return rect

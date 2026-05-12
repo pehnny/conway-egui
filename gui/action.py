@@ -2,8 +2,9 @@ import pygame
 from game import userevent
 from game.Conway import Conway
 from gui import cell
-from patterns import library
+from patterns.library import LIBRARY
 from patterns.Pattern import Pattern
+from gui.pattern import GUIPattern
 
 def action_update_cell(conway: Conway, button: int, hitbox: pygame.Rect) -> None:
     if button != pygame.BUTTON_LEFT:
@@ -17,10 +18,10 @@ def action_update_cell(conway: Conway, button: int, hitbox: pygame.Rect) -> None
     if not hitbox.collidepoint(mouse_x, mouse_y):
         return
     
-    cell_size = cell.get_cell_size(hitbox, conway.grid)
+    cell_x, cell_y = cell.get_cell_size(hitbox, conway.grid.rows, conway.grid.cols)
 
-    col = (mouse_x - hitbox.x) // cell_size
-    row = (mouse_y - hitbox.y) // cell_size
+    col = (mouse_x - hitbox.x) // cell_x
+    row = (mouse_y - hitbox.y) // cell_y
     conway.update_cell(row, col)
     return
 
@@ -43,15 +44,19 @@ def action_next_generation(conway: Conway) -> None:
     conway.next_generation()
     return
 
-def action_change_pattern(key: int, pattern: Pattern) -> None:
+def action_change_pattern(key: int, library: pygame.Rect, pattern: GUIPattern) -> None:
     match key:
-        case pygame.K_g:
-            pattern.set_pattern(library.GLIDER)
-        case _:
+        case pygame.K_SPACE:
             return
+        case pygame.K_g:
+            pattern.update(LIBRARY["glider"], library)
+            return 
+        case _:
+            pattern.update(LIBRARY["default"], library)
+            return 
     return
 
-def action_place_pattern(conway: Conway, button: int, hitbox: pygame.Rect, pattern: Pattern) -> None:
+def action_place_pattern(conway: Conway, button: int, hitbox: pygame.Rect, pattern: GUIPattern) -> None:
     if button != pygame.BUTTON_RIGHT:
         return
         
@@ -63,10 +68,10 @@ def action_place_pattern(conway: Conway, button: int, hitbox: pygame.Rect, patte
     if not hitbox.collidepoint(mouse_x, mouse_y):
         return
     
-    cell_size = cell.get_cell_size(hitbox, conway.grid)
+    cell_x, cell_y = cell.get_cell_size(hitbox, conway.grid.rows, conway.grid.cols)
 
-    col = (mouse_x - hitbox.x) // cell_size
-    row = (mouse_y - hitbox.y) // cell_size
+    col = (mouse_x - hitbox.x) // cell_x
+    row = (mouse_y - hitbox.y) // cell_y
     
-    conway.place_pattern(row, col, pattern)
+    conway.place_pattern(row, col, pattern.pattern)
     return

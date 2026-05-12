@@ -1,12 +1,20 @@
+from dataclasses import dataclass
+
 type RelativeCoordinates = list[tuple[int, int]]
 
+@dataclass
 class Pattern:
-    def __init__(self) -> None:
-        self.pattern: RelativeCoordinates = [(0, 0)]
+    name: str
+    coordinates: RelativeCoordinates
+    
+    def size(self) -> int:
+        x_min, y_min = 0, 0
+        x_max, y_max = 1, 1
 
-    def get_pattern(self) -> RelativeCoordinates:
-        return self.pattern
+        for x, y in self.coordinates:
+            x_min = min(x, x_min)
+            y_min = min(y, y_min)
+            x_max = max(x + 1, x_max)
+            y_max = max(y + 1, y_max)
 
-    def set_pattern(self, coordinates: RelativeCoordinates) -> None:
-        self.pattern = coordinates
-        return
+        return max(x_max - x_min, y_max - y_min)
