@@ -1,6 +1,6 @@
 import pygame
 from dataclasses import dataclass
-from game.Conway import Conway
+from game import Conway
 
 @dataclass
 class GUIConway:

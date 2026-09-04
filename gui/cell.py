@@ -1,5 +1,4 @@
 import pygame
-from game.Grid import Grid
 
 def get_cell_size(simulation: pygame.Rect, rows: int, cols: int) -> tuple[int, int]:
     cell_width = simulation.width // cols

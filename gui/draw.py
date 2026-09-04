@@ -1,7 +1,7 @@
 import pygame
-from game.Grid import Grid
+from game import Grid
 from gui import cell
-from patterns.Pattern import Pattern
+from patterns import Pattern
 
 def draw_menu(screen: pygame.Surface, menu: pygame.Rect, color: pygame.Color = pygame.Color(30, 30, 30)) -> None:
     pygame.draw.rect(screen, color, menu)

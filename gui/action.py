@@ -1,10 +1,7 @@
 import pygame
-from game import userevent
-from game.Conway import Conway
-from gui import cell
-from patterns.library import LIBRARY
-from patterns.Pattern import Pattern
-from gui.pattern import GUIPattern
+from game import userevent, Conway
+from gui import cell, GUIPattern
+from patterns import LIBRARY
 
 def action_update_cell(conway: Conway, button: int, hitbox: pygame.Rect) -> None:
     if button != pygame.BUTTON_LEFT:

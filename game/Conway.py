@@ -1,5 +1,6 @@
-from game.Grid import Grid
-from patterns.Pattern import Pattern
+from exception import CellStateException
+from game import Grid
+from patterns import Pattern
 
 class Conway:
     def __init__(self, rows: int, cols: int) -> None:
@@ -12,6 +13,8 @@ class Conway:
                 self.grid.set_cell(row, col, 1)
             case 1:
                 self.grid.set_cell(row, col, 0)
+            case _:
+                raise CellStateException()
         return
     
     def border(self, index: int, limit: int) -> int:
@@ -48,6 +51,8 @@ class Conway:
                     case 1:
                         if count in (2, 3):
                             new_grid.set_cell(r, c, 1)
+                    case _:
+                        raise CellStateException()
         self.grid = new_grid
         return
     

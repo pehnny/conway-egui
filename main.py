@@ -1,14 +1,16 @@
+import config
 import pygame
 import sys
-from game.Conway import Conway
-from gui import draw
-from gui import action
-from gui.conway import GUIConway
-from config import config
-from game import userevent
-from gui import layout
-from gui.pattern import GUIPattern
-from patterns.library import LIBRARY
+
+from game import userevent, Conway
+from gui import (
+    action, 
+    draw, 
+    layout, 
+    GUIConway, 
+    GUIPattern
+)
+from patterns import LIBRARY
 
 def main() -> None:
     pygame.init()
@@ -34,6 +36,8 @@ def main() -> None:
                     action.action_change_pattern(event.key, layout.LIBRARY_RECT, gui_pattern)
                 case userevent.NEXTGENERATION:
                     action.action_next_generation(gui_conway.conway)
+                case _:
+                    pass
 
         config.SCREEN.fill((0, 0, 0))
         draw.draw_menu(config.SCREEN, layout.MENU_RECT)

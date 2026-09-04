@@ -1,6 +1,5 @@
+from config import RelativeCoordinates
 from dataclasses import dataclass
-
-type RelativeCoordinates = list[tuple[int, int]]
 
 @dataclass
 class Pattern:

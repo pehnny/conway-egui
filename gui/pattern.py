@@ -1,8 +1,7 @@
 import pygame
 from dataclasses import dataclass
-from patterns.Pattern import Pattern
-from gui import layout
-from gui import cell
+from patterns import Pattern
+from gui import cell, layout
 
 @dataclass
 class GUIPattern:

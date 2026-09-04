@@ -1,4 +1,4 @@
-from patterns.Pattern import Pattern
+from patterns import Pattern
 
 LIBRARY = {
     "default" : Pattern(

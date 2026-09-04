@@ -1,8 +1,7 @@
 import pygame
 from config import config
 from gui import cell
-from game.Grid import Grid
-from patterns.Pattern import Pattern
+from patterns import Pattern
 
 #   ---------------------------------
 #   |              Menu             |
