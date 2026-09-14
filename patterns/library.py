@@ -1,8 +1,8 @@
-from patterns import Pattern
+from patterns.Pattern import Pattern
 
 LIBRARY = {
     "default" : Pattern(
-        "default", 
+        "default",
         [(0, 0)]
     ),
     "glider" : Pattern(

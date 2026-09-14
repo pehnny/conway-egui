@@ -24,7 +24,7 @@ from gui.layout import (
     get_conway_rect,
     get_pattern_rect,
 )
-from gui.pattern import GUIPattern
+from gui.GUIPattern import GUIPattern
 
 __all__ = [
     "action_change_pattern",

@@ -34,10 +34,10 @@ def draw_cells(screen: pygame.Surface, grid: Grid, rect: pygame.Rect) -> None:
     return
 
 def draw_pattern(screen: pygame.Surface, pattern: Pattern, rect: pygame.Rect) -> None:
-    cell_x, cell_y = cell.get_cell_size(rect, pattern.size(), pattern.size())
+    cell_x, cell_y = cell.get_cell_size(rect, pattern.get_size(), pattern.get_size())
 
-    for row in range(pattern.size()):
-        for col in range(pattern.size()):
+    for row in range(pattern.get_size()):
+        for col in range(pattern.get_size()):
             x = col * cell_x + rect.x
             y = row * cell_y + rect.y
             

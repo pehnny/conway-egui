@@ -1,5 +1,5 @@
 from exception import CellStateException
-from game import Grid
+from game.Grid import Grid
 from patterns import Pattern
 
 class Conway:

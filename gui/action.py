@@ -1,6 +1,7 @@
 import pygame
 from game import userevent, Conway
-from gui import cell, GUIPattern
+from gui.GUIPattern import GUIPattern
+from gui import cell
 from patterns import LIBRARY
 
 def action_update_cell(conway: Conway, button: int, hitbox: pygame.Rect) -> None:
@@ -43,14 +44,14 @@ def action_next_generation(conway: Conway) -> None:
 
 def action_change_pattern(key: int, library: pygame.Rect, pattern: GUIPattern) -> None:
     match key:
-        case pygame.K_SPACE:
+        case pygame.K_0:
+            pattern.update(LIBRARY["default"], library)
             return
-        case pygame.K_g:
+        case pygame.K_1:
             pattern.update(LIBRARY["glider"], library)
             return 
         case _:
-            pattern.update(LIBRARY["default"], library)
-            return 
+            pass 
     return
 
 def action_place_pattern(conway: Conway, button: int, hitbox: pygame.Rect, pattern: GUIPattern) -> None:
