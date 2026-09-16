@@ -24,5 +24,5 @@ class GUIPattern:
 
     def update(self, pattern: Pattern, library: pygame.Rect):
         self.pattern = pattern
-        self.rectangle = layout.get_pattern_rect(library, pattern)
+        self.rectangle = layout.get_library_rect(library, pattern)
         return

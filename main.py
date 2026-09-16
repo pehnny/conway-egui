@@ -18,7 +18,7 @@ def main() -> None:
 
     cols, rows = 30, 40
     gui_conway = GUIConway(Conway(rows, cols), layout.get_conway_rect(layout.SIMULATION_RECT, rows, cols))
-    gui_pattern = GUIPattern(LIBRARY["default"], layout.get_pattern_rect(layout.LIBRARY_RECT, LIBRARY["default"]))
+    gui_pattern = GUIPattern(LIBRARY["default"], layout.get_library_rect(layout.LIBRARY_RECT, LIBRARY["default"]))
 
     timer = int(1000 // config.SPEED)
     

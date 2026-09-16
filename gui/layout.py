@@ -68,7 +68,7 @@ def get_conway_rect(simulation: pygame.Rect, rows: int, cols: int) -> pygame.Rec
 
     return rect
 
-def get_pattern_rect(library: pygame.Rect, pattern: Pattern) -> pygame.Rect:
+def get_library_rect(library: pygame.Rect, pattern: Pattern) -> pygame.Rect:
     size = pattern.get_size()
     cell_size = cell.get_cell_size(library, size, size)
     offset = cell.get_grid_offset(library, size, size, cell_size)

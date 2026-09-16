@@ -22,7 +22,7 @@ from gui.layout import (
     SIMULATION_LAYOUT,
     SIMULATION_RECT,
     get_conway_rect,
-    get_pattern_rect,
+    get_library_rect,
 )
 from gui.GUIPattern import GUIPattern
 
@@ -47,6 +47,6 @@ __all__ = [
     "SIMULATION_LAYOUT",
     "SIMULATION_RECT",
     "get_conway_rect",
-    "get_pattern_rect",
+    "get_library_rect",
     "GUIPattern",   
 ]
